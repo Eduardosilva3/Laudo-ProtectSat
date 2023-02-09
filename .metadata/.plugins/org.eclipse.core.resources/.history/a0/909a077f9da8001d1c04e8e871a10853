@@ -1,0 +1,5 @@
+package com.laudo.protect.repository.dao;
+
+public interface OrdemEtapaDao {
+
+}

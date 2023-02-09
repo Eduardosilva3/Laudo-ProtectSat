@@ -1,0 +1,5 @@
+package com.laudo.protect.config;
+
+public class SwaggerConfig {
+
+}

@@ -1,0 +1,5 @@
+package com.laudo.protect.model;
+
+public class Ordem {
+
+}
