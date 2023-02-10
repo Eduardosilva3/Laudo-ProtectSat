@@ -1,7 +1,8 @@
 .container-fluid{
   background-color: #DCDCDC;
-  height: 100vh;
+  height: max-content;
   width: 100%;
+  
 }
 
 .row{
@@ -14,6 +15,15 @@
 }
 .div-nav{
   margin: 1rem;
+}
+
+nav .logo{
+  border: solid 0.1rem;
+  border-radius: 0.5rem;
+  background-color: #DCDCDC;
+}
+.nav-link #link{
+  color: #fff;
 }
 
 

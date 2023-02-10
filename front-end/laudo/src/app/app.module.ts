@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { TecnicoModule } from './tecnico/tecnico.module';
 
 import { NavegacaoComponent } from './navegacao/navegacao.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -18,7 +19,8 @@ import { NavegacaoComponent } from './navegacao/navegacao.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    TecnicoModule
+    TecnicoModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

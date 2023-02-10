@@ -1,18 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NavegacaoComponent } from './navegacao/navegacao.component';
+import { ListLaudoComponent } from './tecnico/list-laudo/list-laudo.component';
 import { NovoLaudoComponent } from './tecnico/novo-laudo/novo-laudo.component';
+import { ProgressoLaudoComponent } from './tecnico/progresso-laudo/progresso-laudo.component';
 import { TelaPrincipalComponent } from './tecnico/tela-principal/tela-principal.component';
 
 const routes: Routes = [
 
   {path: '', component: NavegacaoComponent},
+  { path: 'progresso', component:ProgressoLaudoComponent },
   {
     path: 'tecnico',
     component: TelaPrincipalComponent
     ,
     children: [
-    { path: 'novo', component: NovoLaudoComponent }
+    { path: 'novo', component: NovoLaudoComponent },
+    { path: 'lista-ordens', component:ListLaudoComponent }
+   
 
     ]
   }

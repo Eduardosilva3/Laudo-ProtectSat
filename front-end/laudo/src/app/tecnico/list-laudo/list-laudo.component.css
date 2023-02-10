@@ -1,0 +1,31 @@
+#status{
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 0.5rem;
+}
+
+#table{
+    border: solid 0.125rem;
+    
+    border-color: black ;
+    visibility: visible;
+    
+}
+
+#table th, #table td{
+    border: solid 0.105rem;
+    
+    border-color: black ;
+    visibility: visible;
+    
+}
+
+#td-button{
+    align-items: center;
+    text-align: center;
+}
+
+#os{
+    font-weight: bold;
+}

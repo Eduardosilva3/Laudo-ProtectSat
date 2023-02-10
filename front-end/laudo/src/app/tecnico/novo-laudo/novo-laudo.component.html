@@ -1,1 +1,62 @@
-<p>novo-laudo works!</p>
+<header>
+    <h3>Registro de Nova Ordem de manutenção</h3>
+</header>
+<div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-danger" role="alert" *ngIf="this.alertFormIf">
+            {{alertForm}}
+          </div>
+
+          
+
+        <form #f="ngForm">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">CNPJ:</span>
+                </div>
+                    <input name="cnpj" type="text" class="form-control" placeholder="CNPJ" aria-label="Usuário" aria-describedby="basic-addon1" maxlength="18" (keypress)="formatarCnpj()" [(ngModel)]="this.cnpj">
+               </div>
+               <div class="input-group mb-3">
+                   <div class="input-group-prepend">
+                       <span class="input-group-text" id="basic-addon1">Cliente:</span>
+                   </div>
+                       <input name="cliente" type="text" class="form-control" placeholder="Cliente" aria-label="Usuário" aria-describedby="basic-addon1" ngModel>
+               </div>
+               <div class="input-group mb-3">
+                   <div class="input-group-prepend">
+                       <span class="input-group-text" id="basic-addon1">ID - Equipamento:</span>
+                   </div>
+                       <input name="id" type="text" class="form-control" placeholder="ID" aria-label="Usuário" aria-describedby="basic-addon1" ngModel>
+                  </div>
+       
+                  <div class="input-group">
+                   <div class="input-group-prepend">
+                     <span class="input-group-text">Descrição do problema:</span>
+                   </div>
+                   <textarea name="descricao" class="form-control" aria-label="Com textarea" placeholder="Descreva aqui o problema relatado pelo cliente" ngModel></textarea>
+                 </div>
+                 <div>
+                    <button type="button" class="btn btn-primary" (click)="cadastrarOrdem(f)">Abrir Serviço</button>
+                 </div>
+       
+           
+
+
+        </form>
+
+        <div class="alert alert-success" role="alert" *ngIf="this.alert">
+            <h4 class="alert-heading">Ordem de manutenção inicia com Sucesso!</h4>
+            <button type="button" class="close"  aria-label="Close" (click)="this.alert = false">
+                <span aria-hidden="true">&times;</span>
+              </button>
+
+            <p>A ordem de Serviço foi inicia com Sucesso, Direcione o Equipamento para manutenção e anote a ordem de serviço abaixo:</p>
+            <hr>
+            <p class="mb-0"><span id="ordem">Ordem de Serviço: </span>{{this.idOrdem}}</p>
+        </div>
+
+        
+    </div>
+        
+
+</div>
