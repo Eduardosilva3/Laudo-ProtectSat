@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OrdemService } from '../services/ordem.service';
 
 @Component({
   selector: 'app-tela-principal',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./tela-principal.component.css']
 })
 export class TelaPrincipalComponent {
+
+  constructor(public service:OrdemService){}
+
 
 }

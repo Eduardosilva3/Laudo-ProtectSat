@@ -1,4 +1,5 @@
 
+<!--
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
@@ -40,3 +41,50 @@
     </div>
   </div>
 </div>
+-->
+
+<div class="container-fluid text-center">
+
+  <div class="row header">
+    <div class="col-md-8">
+      <h2>Sistema de Gerenciamento de Laudos</h2>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <form class="form-signin" #f="ngForm">
+      <img class="mb-4" src="../../assets/img/engrenagem.png" alt="" width="72" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Acessar Sistema</h1>
+      <label for="inputEmail" class="sr-only">Usuário</label>
+      <input type="text" name="user" id="inputEmail" class="form-control" placeholder="Seu Usuário" required="" autofocus="" ngModel>
+      <label for="inputPassword" class="sr-only">Senha</label>
+      <input  class="senha" type="password" id="inputPassword" class="form-control" placeholder="Senha" required="" name="senha" ngModel>
+
+
+      <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login(f.value)">Login</button>
+
+      <div class="alert alert-warning" role="alert" *ngIf="validar">
+        Usuário ou Senha <span>Incorretos</span>
+      </div>
+
+
+    </form>
+
+  </div>
+
+
+</div>
+<div class="container-fluid">
+  <div class="row row-footer ">
+    <footer class="mt-5 mb-3 text-muted">
+      <p>© 2023-EduTech</p>
+    </footer>
+
+  </div>
+</div>
+
+
+
+
+

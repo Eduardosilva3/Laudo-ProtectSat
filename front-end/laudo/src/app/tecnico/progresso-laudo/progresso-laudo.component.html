@@ -1,9 +1,86 @@
-<div class="progressbar-wrapper">
-    <ul class="progressbar">
-        <li class="active um" >Step 1</li>
-        <li class="active">Step 2</li>
-        <li class="active">Step 3</li>
-        <li>Step 4</li>
-    </ul>
+
+<div class="container-fluid">
+  <div class="row row-nav">
+    <div class="col-md-8 div-nav">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand logo" href="#"><img src="../../../assets/img/logo.png" width="70" height="30" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+
+          <button type="button" class="btn btn-light" id="sair" (click)="this.service.logout()"> <span>Sair </span> <img src="../../../assets/img/sair.png" alt="Sair da conta" > </button>
+
+        </div>
+      </nav>
+
+
+    </div>
+
+
+
+
+
+
+    <div class="row rowP">
+      <div class="progressbar-wrapper col-md-10" id="div-pro">
+        <ul class="progressbar ul">
+            <li class="um" [ngClass]="step1"> <div class="lista">
+              Recebido <span>Data: {{this.ordem.ordemEtapa.date_1.getDate()}}/{{this.ordem.ordemEtapa.date_1.getMonth()}}/{{this.ordem.ordemEtapa.date_1.getFullYear()}}
+              </span>
+            </div>  </li>
+            <li [ngClass]="step2">
+              <div>
+                Encaminhado Manutenção <span>Data: {{this.ordem.ordemEtapa.date_2.getDate()}}/{{this.ordem.ordemEtapa.date_2.getMonth()}}/{{this.ordem.ordemEtapa.date_2.getFullYear()}}
+                </span>
+              </div>
+            </li>
+            <li [ngClass]="step3">
+              <div class="lista"  >
+                <span *ngIf="!previsaoData">Aguardando análise</span>
+                <div *ngIf="previsaoData">
+
+                  <button type="button" class="btn btn-info">Laudo Temporario</button>
+                  <p>Previsão de Entrega: {{this.ordem.ordemEtapa.date_3.getDate()}}/{{this.ordem.ordemEtapa.date_3.getMonth()}}/{{this.ordem.ordemEtapa.date_3.getFullYear()}}</p>
+
+
+                </div>
+              </div>
+            </li>
+            <li [ngClass]="step4">
+              <div class="lista"  >
+                <span *ngIf="!laudoFinal">Aguardando Laudo</span>
+                <div *ngIf="laudoFinal">
+
+                  <button type="button" class="btn btn-success">Baixar Laudo</button>
+
+
+
+                </div>
+              </div>
+            </li>
+        </ul>
+    </div>
+
+
+
+    </div>
+    </div>
+
+
+
+
+
+
+
 </div>
+
+
+
+
+
+
+
+
 
