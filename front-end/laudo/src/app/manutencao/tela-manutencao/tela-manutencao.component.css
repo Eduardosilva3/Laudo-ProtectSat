@@ -1,0 +1,46 @@
+.container-fluid{
+    background-color: #DCDCDC;
+    height: max-content;
+    
+    width: 100%;
+  
+  }
+  
+  
+  .row{
+    justify-content: space-around;
+  
+  }
+  
+  .navbar{
+    border-radius: 0.5rem;
+  }
+  .div-nav{
+    margin: 1rem;
+  }
+  
+  nav .logo{
+    border: solid 0.1rem;
+    border-radius: 0.5rem;
+    background-color: #DCDCDC;
+  }
+  .nav-link #link{
+    color: #fff;
+  }
+
+  .buttonNotifica{
+    margin: left 0.5rem; 
+    margin-right: 0.5rem;
+  }
+  
+  
+  
+  
+  
+  #sair span,
+  button img
+  {
+    width: 1.2rem;
+    height:1.2rem;
+  }
+  

@@ -9,9 +9,9 @@
         </button>
 
         <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-
+          
           <button type="button" class="btn btn-light" id="sair" (click)="this.service.logout()"> <span>Sair </span> <img src="../../../assets/img/sair.png" alt="Sair da conta" > </button>
-
+          <button type="button" class="btn btn-light" id="voltar" (click)="this.service.logout()"> <a routerLink="/tecnico/lista-ordens">Voltar </a><img src="../../../assets/img/volte.png" alt="voltar a tela anterior" > </button>
         </div>
       </nav>
 
@@ -24,15 +24,15 @@
 
 
     <div class="row rowP">
-      <div class="progressbar-wrapper col-md-10" id="div-pro">
+      <div class="progressbar-wrapper col-md-11" id="div-pro">
         <ul class="progressbar ul">
             <li class="um" [ngClass]="step1"> <div class="lista">
-              Recebido <span>Data: {{this.ordem.ordemEtapa.date_1.getDate()}}/{{this.ordem.ordemEtapa.date_1.getMonth()}}/{{this.ordem.ordemEtapa.date_1.getFullYear()}}
+              Recebido <span>Data: {{this.ordem.ordemEtapa.date_1.getDate()}}/{{this.ordem.ordemEtapa.date_1.getMonth()+1}}/{{this.ordem.ordemEtapa.date_1.getFullYear()}}
               </span>
             </div>  </li>
             <li [ngClass]="step2">
-              <div>
-                Encaminhado Manutenção <span>Data: {{this.ordem.ordemEtapa.date_2.getDate()}}/{{this.ordem.ordemEtapa.date_2.getMonth()}}/{{this.ordem.ordemEtapa.date_2.getFullYear()}}
+              <div class="lista">
+                Encaminhado Manutenção <span>Data: {{this.ordem.ordemEtapa.date_2.getDate()}}/{{this.ordem.ordemEtapa.date_2.getMonth()+1}}/{{this.ordem.ordemEtapa.date_2.getFullYear()}}
                 </span>
               </div>
             </li>
@@ -41,8 +41,8 @@
                 <span *ngIf="!previsaoData">Aguardando análise</span>
                 <div *ngIf="previsaoData">
 
-                  <button type="button" class="btn btn-info">Laudo Temporario</button>
-                  <p>Previsão de Entrega: {{this.ordem.ordemEtapa.date_3.getDate()}}/{{this.ordem.ordemEtapa.date_3.getMonth()}}/{{this.ordem.ordemEtapa.date_3.getFullYear()}}</p>
+                  <button type="button" class="btn btn-info" id="button" (click)="this.exibirLaudoTemporario()">Laudo <br> Temporário</button>
+                  <p>Previsão de Entrega: {{this.ordem.ordemEtapa.date_3.getDate()}}/{{this.ordem.ordemEtapa.date_3.getMonth()+1}}/{{this.ordem.ordemEtapa.date_3.getFullYear()}}</p>
 
 
                 </div>
@@ -53,7 +53,7 @@
                 <span *ngIf="!laudoFinal">Aguardando Laudo</span>
                 <div *ngIf="laudoFinal">
 
-                  <button type="button" class="btn btn-success">Baixar Laudo</button>
+                  <button type="button" class="btn btn-success" ><a href="{{this.linkLaudoFinal}}" target="_blank" rel="noopener noreferrer">Laudo<br>Final</a></button>
 
 
 
@@ -61,11 +61,22 @@
               </div>
             </li>
         </ul>
+
+        
+    </div>
+    
+
+
+
+    </div>
     </div>
 
-
-
-    </div>
+    <div class="row laudoTemporario" *ngIf="laudoTemporario">
+      <div class="col-md-5">
+        <h4>Laudo Temporário:</h4>
+        <p>{{this.textoLaudoTemporario}}</p>
+        
+      </div>
     </div>
 
 

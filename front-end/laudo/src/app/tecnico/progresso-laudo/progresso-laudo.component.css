@@ -140,9 +140,43 @@ button img
 
 #conteudoNavbarSuportado{
   flex-direction: row-reverse;
+ 
+}
+
+.navbar-expand-lg .navbar-collapse{
+  justify-content: space-between;
 }
 
 .lista{
   display: flex;
   flex-direction: column;
+}
+
+a{
+  color: black;
+
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+#button{
+  align-items: center;
+  text-align: center;
+}
+
+.laudoTemporario{
+  
+  margin-top: 1rem;
+}
+
+.laudoTemporario div{
+  background-color: #fff;
+  border-radius: 1rem;
+  text-align: justify;
+}
+
+h4{
+  margin-top: 0.5rem;
 }

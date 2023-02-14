@@ -1,5 +1,6 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, EventEmitter, OnInit, Output, Type } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router, RouterLink, TitleStrategy } from '@angular/router';
 import { Etapas } from '../model/etapas';
 import { Ordem } from '../model/ordem';
@@ -21,7 +22,7 @@ export class ListLaudoComponent implements OnInit{
   corStatus:string;
 
   ngOnInit(): void {
-    this.getOrdem()
+    
   }
 
   exibirDetalhes(ord:Ordem){
@@ -32,6 +33,34 @@ export class ListLaudoComponent implements OnInit{
 
   }
 
+  buscarOs(f:NgForm){
+    let id = f.value.busca
+
+    this.ordem = []
+
+    this.service.getOrdemById(id).subscribe((ord:Ordem)=>{
+      this.ordem[0] = ord
+      this.verificarStatus()
+    })
+  }
+
+  buscarCnpj(f:NgForm){
+
+    console.log(f.value.busca)
+    let cnpj:string = f.value.busca
+    let cnpjFormatado:string;
+
+    
+
+    cnpjFormatado = cnpj.substring(0,2) + "." + cnpj.substring(2,5) + "." + cnpj.substring(5,8) +"/"+ cnpj.substring(8,12) + "-" + cnpj.substring(12,14)
+    
+    this.service.getOrdemCnpj(cnpjFormatado).subscribe((ord:Ordem[])=>{
+      this.ordem = ord;
+      this.verificarStatus()
+    })
+    
+   
+  }
 
   getOrdem(){
     this.service.getOrdem().subscribe((ord:Ordem[])=>{

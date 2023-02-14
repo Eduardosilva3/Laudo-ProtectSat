@@ -24,6 +24,7 @@ export class OrdemService {
   receberProgresso(ord:Ordem){
 
     this.ordem = ord
+    
     this.route.navigate(['progresso']);
 
   }
@@ -45,9 +46,18 @@ export class OrdemService {
         catchError(this.handleError))
   }
 
+  // Obtem ordem pelo cnpj
+  getOrdemCnpj(cnpj: string): Observable<Ordem[]> {
+    return this.httpClient.get<Ordem[]>(this.url + '/cnpj?cnpj=' + cnpj)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
   // Obtem ordem pelo id
   getOrdemById(id: number): Observable<Ordem> {
-    return this.httpClient.get<Ordem>(this.url + '/' + id)
+    return this.httpClient.get<Ordem>(this.url + '/id/' + id)
       .pipe(
         retry(2),
         catchError(this.handleError)

@@ -1,3 +1,17 @@
+
+<div class="row find">
+  <div class="col-md-12">
+    <nav class="navbar navbar-light bg-light row-pesquisa">
+      <form class="form-inline" #f="ngForm">
+        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar" maxlength="14" name="busca" ngModel>
+        <button class="btn btn-outline-info my-2 my-sm-0" type="button" (click)="buscarCnpj(f)">Pesquisar CNPJ</button>
+        <button class="btn btn-outline-info" type="button" (click)="buscarOs(f)">Pesquisar O.S</button>
+        <button class="btn btn-outline-success" type="button" (click)="getOrdem()">Exibir Tudo</button>
+      </form>
+    </nav>
+  </div>
+
+</div>
 <div class="row">
     <div class="col-md-12">
         <table class="table" id="table">
@@ -19,7 +33,7 @@
                 <td>{{o.nomeCliente}}</td>
                 <td>{{o.idEquipamento}}</td>
                 <td [ngStyle]="{backgroundColor: this.determinarCor(o.status)}" id="status">{{o.status}}</td>
-                <td id="td-button"> <button type="button" class="btn btn-info" (click)="exibirDetalhes(o)">Detalhes</button> </td>
+                <td id="td-button"> <button type="button" class="btn btn-info" (click)="exibirDetalhes(o)"  >Detalhes</button> </td>
               </tr>
               
             </tbody>

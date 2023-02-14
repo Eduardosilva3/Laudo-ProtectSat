@@ -29,3 +29,15 @@
 #os{
     font-weight: bold;
 }
+
+.row-pesquisa{
+    justify-content: space-around;
+  }
+  
+.find{
+    margin-bottom: 1rem;
+  }
+.row-pesquisa button{
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }

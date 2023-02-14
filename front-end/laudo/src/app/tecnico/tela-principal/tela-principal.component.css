@@ -1,9 +1,12 @@
 .container-fluid{
   background-color: #DCDCDC;
-  height: 100%;
+  height: max-content;
+  
   width: 100%;
 
 }
+
+
 
 .row{
   justify-content: space-around;
