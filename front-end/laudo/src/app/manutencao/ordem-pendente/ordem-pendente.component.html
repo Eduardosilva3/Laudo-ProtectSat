@@ -19,12 +19,14 @@
                 <td>{{o.nomeCliente}}</td>
                 <td>{{o.idEquipamento}}</td>
                 <td [ngStyle]="{backgroundColor: this.determinarCor(o.status)}" id="status">{{o.status}}</td>
-                <td id="td-button"> <button type="button" class="btn btn-info"  >Detalhes</button> </td>
+                <td id="td-button"> <button type="button" class="btn btn-info"  (click)="closeEvent(o)">Detalhes</button> </td>
               </tr>
-              
+
             </tbody>
           </table>
     </div>
 
 </div>
+
+
 

@@ -6,43 +6,43 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
             <span class="navbar-toggler-icon"></span>
           </button>
-  
+
           <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <button type="button" class="btn btn-warning buttonNotifica" routerLink="pendente">
-                    O.S Pendentes <span class="badge badge-light">4</span>
+                <button type="button" class="btn btn-warning buttonNotifica" (click)="getOrdemPendente()" >
+                    O.S Pendentes <span class="badge badge-light">{{this.pendente}}</span>
                   </button>
-                
+
               </li>
               <li class="nav-item">
-                <button type="button" class="btn btn-danger buttonNotifica" routerLink="pendente">
-                    O.S Atrasadas <span class="badge badge-light">4</span>
+                <button type="button" class="btn btn-danger buttonNotifica" (click)="getOrdemAtrasada()">
+                    O.S Atrasadas <span class="badge badge-light">{{this.atrasadas}}</span>
                   </button>
-                
+
               </li>
               <li class="nav-item">
-                <button type="button" class="btn btn-success buttonNotifica" routerLink="pendente">
-                    O.S Concluidas <span class="badge badge-light">4</span>
+                <button type="button" class="btn btn-success buttonNotifica" (click)="getOrdemConcluida()">
+                    O.S Concluidas <span class="badge badge-light">{{this.concluida}}</span>
                   </button>
-                
+
               </li>
-              
-  
-  
+
+
+
             </ul>
             <button type="button" class="btn btn-light" id="sair" (click)="this.service.logout()"> <span>Sair </span> <img src="../../../assets/img/sair.png" alt="Sair da conta" > </button>
-  
+
           </div>
         </nav>
-  
-  
+
+
       </div>
     </div>
-   
+
     <div class="row">
       <div class="col-md-8 tela">
-        <router-outlet></router-outlet>
+        <app-ordem-pendente [lista]="this.ordem" *ngIf="exibirOrdem" (onClose)="tratarOrdem($event)"></app-ordem-pendente>
       </div>
     </div>
   </div>

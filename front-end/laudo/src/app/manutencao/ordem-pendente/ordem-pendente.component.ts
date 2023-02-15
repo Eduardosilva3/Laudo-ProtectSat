@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Ordem } from 'src/app/tecnico/model/ordem';
 import { OrdemService } from 'src/app/tecnico/services/ordem.service';
 
@@ -8,41 +8,54 @@ import { OrdemService } from 'src/app/tecnico/services/ordem.service';
   templateUrl: './ordem-pendente.component.html',
   styleUrls: ['./ordem-pendente.component.css']
 })
-export class OrdemPendenteComponent {
+
+export class OrdemPendenteComponent implements OnInit, OnDestroy{
+
+  @Input() lista:Ordem[]
+  @Output() onClose = new EventEmitter()
+
+
+  ordem:Ordem[] = []
 
     constructor(private service:OrdemService){}
 
-    ordem:Ordem[]
+    ngOnDestroy(): void {
+
+    this.lista = []
+    this.ordem = []
+  }
+
+  closeEvent(ord:Ordem){
+    this.onClose.emit(ord)
+  }
+
+
+
+  ngOnInit(): void {
+    this.ordem = this.lista
+    this.verificarStatus()
+  }
+
+
     corStatus:string;
 
-    getOrdemPendente(){
 
-      
-      this.service.getOrdem().subscribe((ord:Ordem[])=>{
+    pendente(ord:Ordem[]){
+
+    }
 
 
-          ord.forEach(element => {
-            if(!element.ordemEtapa.etapa_4){
-              this.ordem.push(element)
-            }
-          });
-
-          this.verificarStatus()
-
-        
-        })
-      }
 
 
       verificarStatus(){
-    
-    
+
+
 
         this.ordem.forEach(function (value) {
           if(value.ordemEtapa.etapa_1&&value.ordemEtapa.etapa_2==false&&value.ordemEtapa.etapa_3==false&&value.ordemEtapa.etapa_4==false){
             value.status = "Recebido do Cliente"
-            
-            
+
+
         }else if(value.ordemEtapa.etapa_2&&value.ordemEtapa.etapa_3==false&&value.ordemEtapa.etapa_4==false){
           value.status = "Enviado para Manutenção"
         }else if(value.ordemEtapa.etapa_3&&value.ordemEtapa.etapa_4==false){
@@ -50,12 +63,12 @@ export class OrdemPendenteComponent {
         }else{
           value.status = "Concluido"
         }
-    
-    
-    
+
+
+
       });
-    
-      
+
+
       }
 
       determinarCor(valor?:String):String{
@@ -71,20 +84,20 @@ export class OrdemPendenteComponent {
       }
 
 
-      
+
 
     }
 
-        
 
 
 
-    
-
-      
-      
 
 
-   
-    
+
+
+
+
+
+
+
 
