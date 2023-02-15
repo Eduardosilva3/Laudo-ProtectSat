@@ -4,6 +4,8 @@ import { TelaManutencaoComponent } from './tela-manutencao/tela-manutencao.compo
 import { AppRoutingModule } from '../app-routing.module';
 import { OrdemPendenteComponent } from './ordem-pendente/ordem-pendente.component';
 import { ManutencaoRoutingModule } from './manutencao-routing.module';
+import { TratamentoOrdemComponent } from './tratamento-ordem/tratamento-ordem.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -11,13 +13,15 @@ import { ManutencaoRoutingModule } from './manutencao-routing.module';
 @NgModule({
   declarations: [
     TelaManutencaoComponent,
-    OrdemPendenteComponent
+    OrdemPendenteComponent,
+    TratamentoOrdemComponent
     
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
-    ManutencaoRoutingModule
+    ManutencaoRoutingModule,
+    FormsModule
 
   ]
 })

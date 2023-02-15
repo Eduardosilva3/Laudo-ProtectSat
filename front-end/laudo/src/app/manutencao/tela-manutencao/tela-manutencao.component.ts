@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Ordem } from 'src/app/tecnico/model/ordem';
+import { OrdemEtapa } from 'src/app/tecnico/model/ordem-etapa';
 import { OrdemService } from 'src/app/tecnico/services/ordem.service';
 
 @Component({
@@ -79,16 +80,18 @@ export class TelaManutencaoComponent implements OnInit{
 
     ordem:Ordem[] = []
     ordemTemporario:Ordem[] = []
-
+    etapa = new OrdemEtapa()
     buscaOrdem:string
     exibirOrdem:boolean
+    editarEtapa:boolean
 
     pendente:number = 0
     atrasadas:number = 0
     concluida:number = 0
 
     getOrdemPendente(){
-
+      this.confirmacaoAltEtapa = false
+      this.editarEtapa = false
       this.exibirOrdem = false
       this.ordem = []
       this.ordemTemporario = []
@@ -116,7 +119,9 @@ export class TelaManutencaoComponent implements OnInit{
 
     getOrdemAtrasada(){
       this.exibirOrdem = false
-
+      this.confirmacaoAltEtapa = false
+      this.editarEtapa = false
+      
       this.service.getOrdem().subscribe((ord:Ordem[])=>{
 
         this.ordem = []
@@ -141,8 +146,10 @@ export class TelaManutencaoComponent implements OnInit{
 
     getOrdemConcluida(){
       this.exibirOrdem = false
+      this.confirmacaoAltEtapa = false
+      this.editarEtapa = false
       this.service.getOrdem().subscribe((ord:Ordem[])=>{
-
+        
         this.ordem = []
         this.ordemTemporario = []
 
@@ -157,10 +164,35 @@ export class TelaManutencaoComponent implements OnInit{
       })
     }
 
+    temporario:boolean
+    final:boolean
 
     public tratarOrdem(ord:Ordem) {
+      this.etapa = ord.ordemEtapa
 
       this.exibirOrdem = false
+
+      if(!this.etapa.etapa_3){
+        this.temporario = true
+        this.final = false
+      }else if(this.etapa.etapa_3){
+        this.temporario = false
+        this.final = true
+      }
+
+
+      this.editarEtapa = true
+      
+
+    }
+
+
+    confirmacaoAltEtapa:boolean
+
+    public ordemTratada(e:boolean){
+      this.editarEtapa = false
+      this.ngOnInit()
+      this.confirmacaoAltEtapa = true
 
     }
 

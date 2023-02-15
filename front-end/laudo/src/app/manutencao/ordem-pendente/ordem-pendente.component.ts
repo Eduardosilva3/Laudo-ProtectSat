@@ -25,8 +25,21 @@ export class OrdemPendenteComponent implements OnInit, OnDestroy{
     this.ordem = []
   }
 
+  abrirDetalhes(ord:Ordem){
+    alert(ord.descricaoProblema)
+  }
+
   closeEvent(ord:Ordem){
     this.onClose.emit(ord)
+  }
+
+  determinarTextoBotao(ord:Ordem):String{
+
+    if(!ord.ordemEtapa.etapa_3){
+      return "L. Temporario"
+    }else{
+      return "L. Final"
+    }
   }
 
 

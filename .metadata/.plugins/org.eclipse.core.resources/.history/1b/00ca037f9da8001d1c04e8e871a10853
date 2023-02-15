@@ -1,5 +1,0 @@
-package com.laudo.protect.service;
-
-public interface IEtapaService {
-
-}

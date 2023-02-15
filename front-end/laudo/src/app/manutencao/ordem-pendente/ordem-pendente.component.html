@@ -8,7 +8,7 @@
                 <th scope="col">Cliente</th>
                 <th scope="col">ID Equipamento</th>
                 <th scope="col">Status</th>
-                <th scope="col">Acompanhar</th>
+                <th scope="col">Ações</th>
 
               </tr>
             </thead>
@@ -19,7 +19,9 @@
                 <td>{{o.nomeCliente}}</td>
                 <td>{{o.idEquipamento}}</td>
                 <td [ngStyle]="{backgroundColor: this.determinarCor(o.status)}" id="status">{{o.status}}</td>
-                <td id="td-button"> <button type="button" class="btn btn-info"  (click)="closeEvent(o)">Detalhes</button> </td>
+                
+                <td id="td-button"> <button type="button" class="btn btn-info"  (click)="abrirDetalhes(o)">Detalhes</button>
+                  <button type="button" class="btn btn-info"  (click)="closeEvent(o)">{{this.determinarTextoBotao(o)}}</button> </td>
               </tr>
 
             </tbody>

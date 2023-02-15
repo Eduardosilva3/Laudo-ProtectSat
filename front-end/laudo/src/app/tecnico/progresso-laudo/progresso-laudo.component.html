@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
           
           <button type="button" class="btn btn-light" id="sair" (click)="this.service.logout()"> <span>Sair </span> <img src="../../../assets/img/sair.png" alt="Sair da conta" > </button>
-          <button type="button" class="btn btn-light" id="voltar" (click)="this.service.logout()"> <a routerLink="/tecnico/lista-ordens">Voltar </a><img src="../../../assets/img/volte.png" alt="voltar a tela anterior" > </button>
+          <button type="button" class="btn btn-light" id="voltar" routerLink="/tecnico/lista-ordens"> <a routerLink="/tecnico/lista-ordens">Voltar </a><img src="../../../assets/img/volte.png" alt="voltar a tela anterior" > </button>
         </div>
       </nav>
 
@@ -52,10 +52,10 @@
               <div class="lista"  >
                 <span *ngIf="!laudoFinal">Aguardando Laudo</span>
                 <div *ngIf="laudoFinal">
+                  <a href="{{this.linkLaudoFinal}}" target="_blank" rel="noopener noreferrer">  <button type="button" class="btn btn-success"  >Laudo<br>Final</button></a>
+                
 
-                  <button type="button" class="btn btn-success" ><a href="{{this.linkLaudoFinal}}" target="_blank" rel="noopener noreferrer">Laudo<br>Final</a></button>
-
-
+                  
 
                 </div>
               </div>

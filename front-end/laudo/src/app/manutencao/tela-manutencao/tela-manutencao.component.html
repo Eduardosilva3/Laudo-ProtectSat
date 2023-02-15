@@ -43,6 +43,13 @@
     <div class="row">
       <div class="col-md-8 tela">
         <app-ordem-pendente [lista]="this.ordem" *ngIf="exibirOrdem" (onClose)="tratarOrdem($event)"></app-ordem-pendente>
+        <app-tratamento-ordem [etapa]="this.etapa" *ngIf="editarEtapa"  (ordemTrat)="ordemTratada($event)" [temporario]="this.temporario" [final]="this.final"></app-tratamento-ordem>
+        <div class="alert alert-info alert-dismissible fade show" role="alert" *ngIf="confirmacaoAltEtapa">
+          <strong>Sucesso!</strong> A ordem Foi atualizada com sucesso!
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
