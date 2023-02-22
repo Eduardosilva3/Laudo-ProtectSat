@@ -24,7 +24,8 @@ services:
     depends_on:
       - db
     networks:
-      - laudo
+      laudo:
+        ipv4_address: 192.168.0.3
 
   db:
     image: mysql:latest
@@ -46,9 +47,16 @@ services:
     - ./front-end/laudo/producao:/usr/local/apache2/htdocs
     networks:
       - laudo
+    depends_on:
+      - api
 
 volumes:
   laudo-mysql-data:
 
 networks:
   laudo:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 192.168.0.0/20
+         gateway: 192.168.0.1
