@@ -1,0 +1,41 @@
+version: "3.3"
+
+services:
+  api:
+    image:  spring-boot
+    build:
+      context: . 
+      dockerfile: Api-Laudo/Dockerfile
+    container_name: Api-Laudo
+    expose:
+      - 5000
+    
+    
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_DB: laudo
+      
+
+    restart: always
+    depends_on:
+      - mysql
+    networks:
+      - laudo
+
+  mysql:
+    image: mysql:latest
+    volumes:
+      - laudo-mysql-data:/var/lib/mysql
+    environment: 
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laudo
+    networks:
+      - laudo
+
+volumes:
+  laudo-mysql-data:
+
+networks:
+  laudo:
