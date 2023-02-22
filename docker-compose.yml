@@ -5,10 +5,10 @@ services:
     image:  spring-boot
     build:
       context: . 
-      dockerfile: Api-Laudo/Dockerfile
+      dockerfile: Api-Laudos/Dockerfile
     container_name: Api-Laudo
-    expose:
-      - 5000
+    ports:
+      - "5000:8080"
     
     
     environment:
@@ -20,11 +20,11 @@ services:
 
     restart: always
     depends_on:
-      - mysql
+      - db
     networks:
       - laudo
 
-  mysql:
+  db:
     image: mysql:latest
     volumes:
       - laudo-mysql-data:/var/lib/mysql
@@ -33,6 +33,8 @@ services:
       MYSQL_DATABASE: laudo
     networks:
       - laudo
+    ports:
+      - "3306:3306"
 
 volumes:
   laudo-mysql-data:
