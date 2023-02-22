@@ -46,7 +46,7 @@ services:
     - ./front-end/laudo/producao:/usr/local/apache2/htdocs
     networks:
       - laudo
-    depends_on:
+    links:
       - api
 
 volumes:
