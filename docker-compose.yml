@@ -8,7 +8,9 @@ services:
       dockerfile: Api-Laudos/Dockerfile
     container_name: Api-Laudo
     ports:
-      - "5000:8080"
+      - "8080:8080"
+    expose:
+      - 8080
     
     
     environment:
