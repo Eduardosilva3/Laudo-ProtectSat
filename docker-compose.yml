@@ -42,6 +42,8 @@ services:
     - '80:80'
     volumes:
     - ./front-end/laudo/producao:/usr/local/apache2/htdocs
+    networks:
+      - laudo
 
 volumes:
   laudo-mysql-data:
