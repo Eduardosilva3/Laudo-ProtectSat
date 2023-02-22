@@ -1,0 +1,50 @@
+version: "3.3"
+
+services:
+  api:
+    image:  spring-boot
+    build:
+      context: . 
+      dockerfile: Api-Laudos/Dockerfile
+    container_name: Api-Laudo
+    ports:
+      - "5000:8080"
+    
+    
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_DB: laudo
+      
+
+    restart: always
+    depends_on:
+      - db
+    networks:
+      - laudo
+
+  db:
+    image: mysql:latest
+    volumes:
+      - laudo-mysql-data:/var/lib/mysql
+    environment: 
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laudo
+    networks:
+      - laudo
+    ports:
+      - "3306:3306"
+  apache:
+    image: httpd:latest
+    container_name: front-end
+    ports:
+    - '80:80'
+    volumes:
+    - ./front-end/laudo/producao:/usr/local/apache2/htdocs
+
+volumes:
+  laudo-mysql-data:
+
+networks:
+  laudo:
