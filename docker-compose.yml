@@ -35,8 +35,14 @@ services:
       MYSQL_DATABASE: laudo
     networks:
       - laudo
+  
+  apache:
+    image: httpd:latest
+    container_name: front-end
     ports:
-      - "3306:3306"
+    - '80:80'
+    volumes:
+    - ./front-end/laudo/producao:/usr/local/apache2/htdocs
   
 
 volumes:
