@@ -12,7 +12,7 @@ export class UserService {
 
 
 
-  url = 'http://Api-Laudo:8080/user'; // api rest fake
+  url = 'http://192.168.48.1:8080/user'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient,  private route:Router) { }
