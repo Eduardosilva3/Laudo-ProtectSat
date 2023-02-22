@@ -47,7 +47,7 @@ services:
     networks:
       - laudo
     depends_on:
-      - Api-Laudo
+      - api
 
 volumes:
   laudo-mysql-data:
