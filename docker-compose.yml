@@ -7,8 +7,6 @@ services:
       context: . 
       dockerfile: Api-Laudos/Dockerfile
     container_name: Api-Laudo
-    ports:
-      - "8080:8080"
     expose:
       - 8080
     
@@ -46,6 +44,8 @@ services:
     - ./front-end/laudo/producao:/usr/local/apache2/htdocs
     networks:
       - laudo
+    depends_on:
+      - api
     links:
       - api
 
