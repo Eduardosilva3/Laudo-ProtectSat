@@ -37,7 +37,33 @@
 .find{
     margin-bottom: 1rem;
   }
+
+.form-inline{
+    justify-content: center;
+}
+
 .row-pesquisa button{
     margin-left: 1rem;
     margin-right: 1rem;
   }
+
+td{
+    padding: 0.25rem;
+}
+.td-status{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.td-status button{
+    padding: 0.5rem;
+    margin: 0.5rem;
+    
+}
+
+.td-status div{
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    
+}

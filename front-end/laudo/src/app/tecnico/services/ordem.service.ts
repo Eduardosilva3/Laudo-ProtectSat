@@ -9,7 +9,7 @@ import { Ordem } from '../model/ordem';
 })
 export class OrdemService {
 
-  url = 'http://3.235.15.68:8080/ordem'; // api rest fake
+  url = 'http://172.19.1.34:8080/ordem'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient,  private route:Router) { }
