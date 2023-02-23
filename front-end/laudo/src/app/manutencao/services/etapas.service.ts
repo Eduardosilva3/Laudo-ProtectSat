@@ -9,7 +9,7 @@ import { OrdemEtapa } from 'src/app/tecnico/model/ordem-etapa';
 export class EtapasService {
 
   
-  url = 'http://localhost:8080/etapa'; // api rest fake
+  url = 'http://3.235.15.68:8080/etapa'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }
