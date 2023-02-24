@@ -12,7 +12,7 @@ export class UserService {
 
 
 
-  url = 'http://172.19.1.34:8080/user'; // api rest fake
+  url = 'http://34.239.1.10:8080/user'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient,  private route:Router) { }
