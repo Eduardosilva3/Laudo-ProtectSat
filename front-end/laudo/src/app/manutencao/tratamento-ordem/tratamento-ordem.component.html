@@ -1,0 +1,72 @@
+<div class="row header">
+    <div class="col-md-12">
+        <!-- Imagem e texto -->
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <img src="../../../assets/img/engrenagem.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      Atualizar O.S
+    </a>
+  </nav>
+
+    </div>
+</div>
+<div class="row temporario" *ngIf="temporario">
+    <form class="col-md-12" #f="ngForm">
+
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Previsão de Entrega</h5>
+                  
+                  <p class="card-text"><input type="date" name="dataPrevisao" id="" ngModel></p>
+                
+                </div>
+              </div>
+    
+        </div>
+    
+        <div class="col-md-12 textarea">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Laudo Temporario</span>
+                </div>
+                <textarea class="form-control" aria-label="Com textarea" name="laudoTemporario" ngModel></textarea>
+              </div>
+    
+        </div>
+        
+
+            <button type="button" class="btn btn-rg btn-info" (click)="receberLaudoTemporario(f)">Registrar Laudo</button>
+
+        
+
+    </form>
+
+   
+
+</div>
+<div class="row final" *ngIf="final">
+
+    <div class="col-md-12">
+
+        <form #f="ngForm">
+            <div class="input-group mb-3">
+                <input name="laudoFinal" ngModel type="text" class="form-control" placeholder="Cole o Link do Laudo Final" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                  <button class="btn btn-info " type="button" id="button-addon2" (click)="receberLaudoFinal(f)">Salvar</button>
+                </div>
+              </div>
+
+        </form>
+        
+
+
+  
+        
+       
+  
+
+    </div>
+
+</div>
+

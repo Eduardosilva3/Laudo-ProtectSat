@@ -19,8 +19,8 @@ export class NavegacaoComponent implements OnInit{
 
       if(storage=="tecnico"){
         this.router.navigate(['tecnico'])
-      }else{
-        
+      }else if(storage==="manutencao"){
+        this.router.navigate(['manutencao'])
       }
   }
 
@@ -46,6 +46,8 @@ export class NavegacaoComponent implements OnInit{
   navegacao(type:string){
     if(type==="tecnico"){
       this.router.navigate(['tecnico'])
+    }else if(type==="manutencao"){
+      this.router.navigate(['manutencao'])
     }
   }
 

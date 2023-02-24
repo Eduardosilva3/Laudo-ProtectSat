@@ -8,6 +8,7 @@ import { TecnicoModule } from './tecnico/tecnico.module';
 
 import { NavegacaoComponent } from './navegacao/navegacao.component';
 import { FormsModule } from '@angular/forms';
+import { ManutencaoModule } from './manutencao/manutencao.module';
 
 
 
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     TecnicoModule,
-    FormsModule
+    FormsModule,
+    ManutencaoModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,7 @@
 export class OrdemEtapa {
 
+    idEtapa?:number
+
     etapa_1:boolean;
     date_1:Date;
 

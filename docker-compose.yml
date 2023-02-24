@@ -8,7 +8,9 @@ services:
       dockerfile: Api-Laudos/Dockerfile
     container_name: Api-Laudo
     ports:
-      - "5000:8080"
+      - '8080:8080'
+    expose:
+      - 8080
     
     
     environment:
@@ -33,8 +35,12 @@ services:
       MYSQL_DATABASE: laudo
     networks:
       - laudo
+<<<<<<< HEAD
     ports:
       - "3306:3306"
+=======
+  
+>>>>>>> developer
   apache:
     image: httpd:latest
     container_name: front-end
@@ -42,9 +48,19 @@ services:
     - '80:80'
     volumes:
     - ./front-end/laudo/producao:/usr/local/apache2/htdocs
+<<<<<<< HEAD
+=======
+  
+>>>>>>> developer
 
 volumes:
   laudo-mysql-data:
 
 networks:
   laudo:
+<<<<<<< HEAD
+=======
+    driver: bridge
+    
+       
+>>>>>>> developer

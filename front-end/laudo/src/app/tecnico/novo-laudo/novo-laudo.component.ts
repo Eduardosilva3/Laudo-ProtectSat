@@ -28,7 +28,7 @@ export class NovoLaudoComponent implements OnInit {
     
 
     formatarCnpj(){
-      console.log(this.cnpj.length)
+      
       
       if(this.cnpj.length==2){
         this.cnpj+="."
@@ -39,7 +39,7 @@ export class NovoLaudoComponent implements OnInit {
       }
 
       if(this.cnpj.length==10){
-        this.cnpj+="."
+        this.cnpj+="/"
       }
 
       if(this.cnpj.length==15){

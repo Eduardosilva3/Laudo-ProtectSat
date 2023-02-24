@@ -14,7 +14,9 @@ export class ProgressoLaudoComponent implements OnInit{
   step3:string
   step4:string
 
-
+  date1 = new Date() 
+  date2 = new Date() 
+  date3 = new Date() 
 
 
   ordem = new Ordem()
@@ -25,7 +27,7 @@ export class ProgressoLaudoComponent implements OnInit{
 
 
   ngOnInit(): void {
-
+    
     this.ordem = this.service.enviarProgresso()
 
     this.receberOrdem(this.ordem)
@@ -34,16 +36,28 @@ export class ProgressoLaudoComponent implements OnInit{
 
   previsaoData:boolean
   laudoFinal:boolean
+  laudoTemporario:boolean
+
+  textoLaudoTemporario:string;
+  linkLaudoFinal:string
 
 
+  exibirLaudoTemporario(){
+    this.laudoTemporario = true
+  }
 
 
   public receberOrdem(ord:Ordem){
-    this.ordem.ordemEtapa.date_1 = new Date()
+    
+    
+    
+    this.ordem.ordemEtapa.date_1 = new Date(ord.ordemEtapa.date_1)
+    
+    this.ordem.ordemEtapa.date_2 = new Date(ord.ordemEtapa.date_2)
+    this.ordem.ordemEtapa.date_3 = new Date(ord.ordemEtapa.date_3)
 
-    this.ordem.ordemEtapa.date_2 = new Date()
-    this.ordem.ordemEtapa.date_3 = new Date()
-
+    this.textoLaudoTemporario = ord.ordemEtapa.laudoTemporario
+    this.linkLaudoFinal = ord.ordemEtapa.laudoFinal
 
       if(this.ordem.ordemEtapa.etapa_1){
         this.step1 = "active"

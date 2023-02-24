@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.laudo.protect.model.Ordem;
@@ -25,8 +26,8 @@ public class OrdemController {
 		return service.buscarTodas();
 	}
 	
-	@RequestMapping(value = "/ordem/{cnpj}", method = RequestMethod.GET)
-	public ResponseEntity<List<Ordem>> buscarCnpj(@PathVariable String cnpj){
+	@RequestMapping(value = "/ordem/cnpj", method = RequestMethod.GET)
+	public ResponseEntity<List<Ordem>> buscarCnpj(@RequestParam("cnpj") String cnpj){
 		
 		List<Ordem> retorno = service.buscarPorCnpj(cnpj);
 		

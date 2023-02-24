@@ -1,4 +1,18 @@
-<div class="row">
+
+<div class="row find">
+  <div class="col-md-12">
+    <nav class="navbar navbar-light bg-light row-pesquisa">
+      <form class="form-inline" #f="ngForm">
+        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar" maxlength="14" name="busca" ngModel>
+        <button class="btn btn-outline-info my-2 my-sm-0" type="button" (click)="buscarCnpj(f)">Pesquisar CNPJ</button>
+        <button class="btn btn-outline-info" type="button" (click)="buscarOs(f)">Pesquisar O.S</button>
+        <button class="btn btn-outline-success" type="button" (click)="getOrdem()">Exibir Tudo</button>
+      </form>
+    </nav>
+  </div>
+
+</div>
+<div class="row d-none d-sm-block">
     <div class="col-md-12">
         <table class="table" id="table">
             <thead class="thead-dark">
@@ -19,11 +33,48 @@
                 <td>{{o.nomeCliente}}</td>
                 <td>{{o.idEquipamento}}</td>
                 <td [ngStyle]="{backgroundColor: this.determinarCor(o.status)}" id="status">{{o.status}}</td>
-                <td id="td-button"> <button type="button" class="btn btn-info" (click)="exibirDetalhes(o)">Detalhes</button> </td>
+                <td id="td-button"> <button type="button" class="btn btn-info" (click)="exibirDetalhes(o)"  >Detalhes</button> </td>
               </tr>
               
             </tbody>
           </table>
     </div>
+    
 
 </div>
+
+<div class="row d-block d-sm-none">
+  <div class="col-12">
+      <table class="table" id="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">O.S</th>
+              
+              <th scope="col">Cliente</th>
+              <th scope="col">ID Equip.</th>
+              <th scope="col">Status</th>
+              
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let o of ordem">
+              <td id="os">{{o.idOrdem}}</td>
+              
+              <td>{{o.nomeCliente}}</td>
+              <td>{{o.idEquipamento}}</td>
+              
+              <td class="td-status">
+                <div [ngStyle]="{backgroundColor: this.determinarCor(o.status)}" id="status">{{o.status}}</div>
+                <button type="button" class="btn btn-info" (click)="exibirDetalhes(o)"  >Detalhes</button>
+              </td>
+              
+            </tr>
+            
+          </tbody>
+        </table>
+  </div>
+  
+
+</div>
+
