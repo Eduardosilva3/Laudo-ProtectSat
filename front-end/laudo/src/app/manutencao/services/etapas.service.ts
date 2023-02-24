@@ -8,29 +8,29 @@ import { OrdemEtapa } from 'src/app/tecnico/model/ordem-etapa';
 })
 export class EtapasService {
 
-  
-  url = 'http://172.19.1.34:8080/etapa'; // api rest fake
+
+  url = 'http://34.239.1.10:8080/etapa'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }
 
-  
 
-  
 
- 
 
-  
+
+
+
+
   // Headers
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
 
- 
 
- 
 
-  
+
+
+
   // Atualiza Etapa
   putEtapa(ordEt: OrdemEtapa): Observable<OrdemEtapa> {
     return this.httpClient.put<OrdemEtapa>(this.url, JSON.stringify(ordEt), this.httpOptions)
