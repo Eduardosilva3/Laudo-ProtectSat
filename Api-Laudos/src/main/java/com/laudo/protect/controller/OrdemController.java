@@ -22,7 +22,7 @@ public class OrdemController {
 	
 	@RequestMapping(value = "/ordem", method = RequestMethod.GET)
 	public List<Ordem> buscarTodos(){
-		
+		System.out.println("controller");
 		return service.buscarTodas();
 	}
 	

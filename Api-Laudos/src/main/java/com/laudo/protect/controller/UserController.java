@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.laudo.protect.config.AuthToken;
+import com.laudo.protect.config.TokenUtil;
 import com.laudo.protect.model.User;
 import com.laudo.protect.service.UserService;
 
@@ -19,25 +21,25 @@ public class UserController {
 	@Autowired
 	private UserService service;
 	
+	@Autowired
+	private TokenUtil token;
+	
 	
 	@PostMapping("/user")
-	public ResponseEntity<User> validarUsuario(@RequestBody User user){
+	public ResponseEntity<AuthToken> validarUsuario(@RequestBody User user){
 		
 		
 		
-		
-		System.out.println("====== " + user.getUser());
-		System.out.println("====== " + user.getSenha());
 		
 		User res = service.verificarUsuario(user);
 		
 		
 		
-		if(res.getType()!="Erro Login") {
-			return ResponseEntity.ok(res);
-		}else {
-			return ResponseEntity.ok(res);
-		}
+		
+			return ResponseEntity.ok(token.encodeToken(res));
+		
+			
+		
 	}
 	
 	@PostMapping("/user/registrar")

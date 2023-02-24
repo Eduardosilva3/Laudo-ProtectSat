@@ -52,4 +52,5 @@ public class Config extends WebMvcConfigurationSupport {
 	            .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
 	        
 	    }
+	 
 }

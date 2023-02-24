@@ -15,6 +15,8 @@ public class UserService implements IUserService {
 	@Override
 	public User buscarUser(String user) {
 		// TODO Auto-generated method stub
+		
+		
 		return dao.findByuser(user);
 	}
 	
