@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, Observable, retry, throwError } from 'rxjs';
+import { OrdemService } from 'src/app/tecnico/services/ordem.service';
 import { User } from '../model/user';
 
 @Injectable({
@@ -12,7 +13,7 @@ export class UserService {
 
 
 
-  url = 'http://34.239.1.10:8080/user'; // api rest fake
+  url = 'http://localhost:8080/user'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient,  private route:Router) { }
@@ -38,7 +39,7 @@ export class UserService {
 
 
   // cria ordem
-  validarUser(user:User): Observable<User> {
+  validarUser(user:User): Observable<any> {
 
 
 
@@ -62,6 +63,7 @@ export class UserService {
     } else {
       // Erro ocorreu no lado do servidor
       errorMessage = `Código do erro: ${error.status}, ` + `menssagem: ${error.message}`;
+
     }
     console.log(errorMessage);
     return throwError(errorMessage);

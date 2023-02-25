@@ -32,11 +32,15 @@ export class NavegacaoComponent implements OnInit{
 
 
   login(user:User){
-    this.service.validarUser(user).subscribe((type:User)=>{
+    this.service.validarUser(user).subscribe((type:any)=>{
+      console.log(type)
 
-      if(type.type!="Erro Login"){
-        localStorage.setItem("type",type.type)
-        this.navegacao(type.type)
+      var token:string = type.token
+      var resultado = token.replace("Bearer ", "")
+      if(type.user.type!="Erro Login"){
+        localStorage.setItem("type",type.user.type)
+        localStorage.setItem("token",resultado)
+        this.navegacao(type.user.type)
       }else{
         this.validar = true
       }

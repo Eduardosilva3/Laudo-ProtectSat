@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { catchError, Observable, retry, throwError } from 'rxjs';
 import { OrdemEtapa } from 'src/app/tecnico/model/ordem-etapa';
+import { OrdemService } from 'src/app/tecnico/services/ordem.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { OrdemEtapa } from 'src/app/tecnico/model/ordem-etapa';
 export class EtapasService {
 
 
-  url = 'http://34.239.1.10:8080/etapa'; // api rest fake
+  url = 'http://localhost:8080/etapa'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }
@@ -53,6 +54,7 @@ export class EtapasService {
     } else {
       // Erro ocorreu no lado do servidor
       errorMessage = `Código do erro: ${error.status}, ` + `menssagem: ${error.message}`;
+
     }
     console.log(errorMessage);
     return throwError(errorMessage);

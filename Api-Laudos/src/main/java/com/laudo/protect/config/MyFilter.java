@@ -28,28 +28,39 @@ public class MyFilter extends OncePerRequestFilter{
 			throws ServletException, IOException, JsonProcessingException, java.io.IOException {
 		System.out.println("filtro");
 
-		
-		if(request.getHeader("authorization")!=null) {
-			//recupero o cabeçaljo
-			Authentication auth = TokenUtil.decodeToken(request);
+		try {
 			
-			
-			
-			if(auth != null) {
-				//se a requisição for valida passa para frente
-				SecurityContextHolder.getContext().setAuthentication(auth);
+			if(request.getHeader("authorization")!=null) {
+				//recupero o cabeçaljo
+				Authentication auth = TokenUtil.decodeToken(request);
 				
-			}else {
-				//token eciste, mas não é valido e customiza a mensagem de erro
-				ErroDTO erro = new ErroDTO(401, "autorização invalida");
-				response.setStatus(erro.getStatus());
-				response.setContentType("application/json");
-				ObjectMapper mapper = new ObjectMapper();
-				response.getWriter().print(mapper.writeValueAsString(erro));
-				response.getWriter().flush();
-				return;
+				
+				
+				if(auth != null) {
+					//se a requisição for valida passa para frente
+					SecurityContextHolder.getContext().setAuthentication(auth);
+					
+				}
+					
+				
 			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			//token eciste, mas não é valido e customiza a mensagem de erro
+			
+			System.out.println(e.getMessage());
+			
+			ErroDTO erro = new ErroDTO(401, "autorização invalida");
+			response.setStatus(erro.getStatus());
+			response.setContentType("application/json");
+			ObjectMapper mapper = new ObjectMapper();
+			response.getWriter().print(mapper.writeValueAsString(erro));
+			response.getWriter().flush();
+			return;
 		}
+		
+		
 		
 		filterChain.doFilter(request, response);
 		

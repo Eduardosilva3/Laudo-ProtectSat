@@ -30,10 +30,11 @@ public class TokenUtil {
 	//Algumas constantes utilitarias
 	private static final String EMISSOR = "EduDev";
 	private static final String TOKEN_HEADER = "Bearer ";
-	private static final String TOKEN_KEY = "01234567890123456789012345678901";
+	private static final String TOKEN_KEY = "858491499e7825p4133263g23w716882";
 	private static final long UM_SEGUNDO = 1000;
 	private static final long UM_MINUTO = 60*UM_SEGUNDO;
 	private static final long CINCO_MINUTO = UM_MINUTO*5;
+	private static final long VINTE_MINUTO = CINCO_MINUTO*4;
 	
 	//CODIFICADO DO TOKEN
 	public AuthToken encodeToken(User u) {
@@ -44,7 +45,7 @@ public class TokenUtil {
 			String tokenJWT = Jwts.builder().setSubject(u.getUser())
 					.setAudience(u.getType())
 					.setIssuer(EMISSOR)
-					.setExpiration(new Date(System.currentTimeMillis() + CINCO_MINUTO))
+					.setExpiration(new Date(System.currentTimeMillis() + VINTE_MINUTO))
 					.signWith(secretKey, SignatureAlgorithm.HS256)
 					.compact();
 

@@ -9,6 +9,8 @@ import { TecnicoModule } from './tecnico/tecnico.module';
 import { NavegacaoComponent } from './navegacao/navegacao.component';
 import { FormsModule } from '@angular/forms';
 import { ManutencaoModule } from './manutencao/manutencao.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './services/interceptors/token.interceptor';
 
 
 
@@ -24,7 +26,9 @@ import { ManutencaoModule } from './manutencao/manutencao.module';
     FormsModule,
     ManutencaoModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true,}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

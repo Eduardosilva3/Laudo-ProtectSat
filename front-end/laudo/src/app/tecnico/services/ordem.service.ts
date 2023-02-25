@@ -9,7 +9,7 @@ import { Ordem } from '../model/ordem';
 })
 export class OrdemService {
 
-  url = 'http://34.239.1.10:8080/ordem'; // api rest fake
+  url = 'http://localhost:8080/ordem'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient,  private route:Router) { }
@@ -68,10 +68,15 @@ export class OrdemService {
   saveOrdem(ord: Ordem): Observable<Ordem> {
     return this.httpClient.post<Ordem>(this.url, JSON.stringify(ord), this.httpOptions)
       .pipe(
+
         retry(2),
         catchError(this.handleError)
+
+        
+
       )
   }
+
 
 
 
@@ -86,8 +91,15 @@ export class OrdemService {
     } else {
       // Erro ocorreu no lado do servidor
       errorMessage = `Código do erro: ${error.status}, ` + `menssagem: ${error.message}`;
+
     }
+
+
+
+
     console.log(errorMessage);
+
+
     return throwError(errorMessage);
   };
 
