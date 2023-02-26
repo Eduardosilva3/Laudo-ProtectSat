@@ -6,12 +6,12 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
-import com.google.common.util.concurrent.Service;
+
 import com.laudo.protect.model.User;
 import com.laudo.protect.repository.dao.UserDao;
 import com.laudo.protect.service.UserService;

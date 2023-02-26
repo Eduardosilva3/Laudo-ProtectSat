@@ -1,6 +1,7 @@
 package com.laudo.protect.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,8 +14,11 @@ import com.laudo.protect.config.TokenUtil;
 import com.laudo.protect.model.User;
 import com.laudo.protect.service.UserService;
 
-import springfox.documentation.spring.web.json.Json;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
+
+@Api(value = "API USUARIOS", produces = MediaType.APPLICATION_JSON_VALUE, tags = {"API - USUARIOS"}, description = "Controller para cadastrar e validar usuarios")
 @RestController
 public class UserController {
 	
@@ -24,7 +28,9 @@ public class UserController {
 	@Autowired
 	private TokenUtil token;
 	
-	
+	@ApiOperation(value = "Cadastrar Usuarios", 
+	        
+	        notes = "Post para Cadstrar Usuarios")
 	@PostMapping("/user")
 	public ResponseEntity<AuthToken> validarUsuario(@RequestBody User user){
 		
@@ -42,6 +48,7 @@ public class UserController {
 		
 	}
 	
+	@ApiOperation(hidden = true, value = "Cadastrar")
 	@PostMapping("/user/registrar")
 	public ResponseEntity<User> registrar(@RequestBody User user){
 		User res = service.cadastrarUsuario(user);
