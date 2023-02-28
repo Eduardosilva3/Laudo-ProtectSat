@@ -28,9 +28,9 @@ public class UserController {
 	@Autowired
 	private TokenUtil token;
 	
-	@ApiOperation(value = "Cadastrar Usuarios", 
+	@ApiOperation(value = "Validar Usuarios", 
 	        
-	        notes = "Post para Cadstrar Usuarios")
+	        notes = "Post para Validar Usuarios")
 	@PostMapping("/user")
 	public ResponseEntity<AuthToken> validarUsuario(@RequestBody User user){
 		
