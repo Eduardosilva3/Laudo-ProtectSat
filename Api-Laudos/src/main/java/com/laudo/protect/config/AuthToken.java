@@ -1,11 +1,12 @@
 package com.laudo.protect.config;
 
-import com.laudo.protect.model.User;
+import com.laudo.protect.dto.UserDTO;
+
 
 public class AuthToken {
 	
 	private String token;
-	private User user;
+	private UserDTO user;
 
 	public String getToken() {
 		return token;
@@ -24,11 +25,11 @@ public class AuthToken {
 		super();
 	}
 
-	public User getUser() {
+	public UserDTO getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(UserDTO user) {
 		this.user = user;
 	}
 	

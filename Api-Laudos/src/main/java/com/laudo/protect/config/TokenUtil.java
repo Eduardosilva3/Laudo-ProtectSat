@@ -11,7 +11,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
-
+import com.laudo.protect.dto.UserDTO;
 import com.laudo.protect.model.User;
 import com.laudo.protect.repository.dao.UserDao;
 import com.laudo.protect.service.UserService;
@@ -37,8 +37,10 @@ public class TokenUtil {
 	private static final long VINTE_MINUTO = CINCO_MINUTO*4;
 	
 	//CODIFICADO DO TOKEN
-	public AuthToken encodeToken(User u) {
+	public static AuthToken encodeToken(UserDTO u) {
 		Key secretKey = Keys.hmacShaKeyFor(TOKEN_KEY.getBytes());
+		
+		
 		
 		if(u.getType()!="Erro Login") {
 			
@@ -48,7 +50,7 @@ public class TokenUtil {
 					.setExpiration(new Date(System.currentTimeMillis() + VINTE_MINUTO))
 					.signWith(secretKey, SignatureAlgorithm.HS256)
 					.compact();
-
+					
 					AuthToken token = new AuthToken(TOKEN_HEADER + tokenJWT);
 					token.setUser(u);
 					return token;
