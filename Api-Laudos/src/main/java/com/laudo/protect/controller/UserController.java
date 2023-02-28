@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.laudo.protect.config.AuthToken;
 import com.laudo.protect.config.TokenUtil;
+import com.laudo.protect.dto.UserDTO;
 import com.laudo.protect.model.User;
 import com.laudo.protect.service.UserService;
 
@@ -25,8 +26,7 @@ public class UserController {
 	@Autowired
 	private UserService service;
 	
-	@Autowired
-	private TokenUtil token;
+	
 	
 	@ApiOperation(value = "Cadastrar Usuarios", 
 	        
@@ -38,17 +38,18 @@ public class UserController {
 		
 		
 		User res = service.verificarUsuario(user);
+		UserDTO userDto = new UserDTO(res.getUser(), res.getType());
 		
 		
 		
 		
-			return ResponseEntity.ok(token.encodeToken(res));
+			return ResponseEntity.ok(TokenUtil.encodeToken(userDto));
 		
 			
 		
 	}
 	
-	@ApiOperation(hidden = true, value = "Cadastrar")
+	@ApiOperation(hidden = false, value = "Cadastrar")
 	@PostMapping("/user/registrar")
 	public ResponseEntity<User> registrar(@RequestBody User user){
 		User res = service.cadastrarUsuario(user);

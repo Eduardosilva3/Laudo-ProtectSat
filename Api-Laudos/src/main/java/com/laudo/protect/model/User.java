@@ -31,6 +31,17 @@ public class User {
 	public User() {
 		super();
 	}
+	
+	
+
+	public User(String user, String senha, String type) {
+		super();
+		this.user = user;
+		this.senha = senha;
+		this.type = type;
+	}
+
+
 
 	public User(int idUser, String user, String senha, String type) {
 		super();
