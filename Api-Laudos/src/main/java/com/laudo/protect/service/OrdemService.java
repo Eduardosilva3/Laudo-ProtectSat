@@ -50,7 +50,7 @@ public class OrdemService implements IOrdemService {
 		OrdemEtapa resEtapa = service.iniciarEtapa(ordemE);
 		res.setOrdemEtapa(resEtapa);
 		
-		res = dao.save(res);
+		
 		
 		
 		
@@ -59,7 +59,7 @@ public class OrdemService implements IOrdemService {
 			
 		
 		
-		return dao.findById(res.getIdOrdem()).orElse(null);
+		return res = dao.save(res);
 	}
 	
 }

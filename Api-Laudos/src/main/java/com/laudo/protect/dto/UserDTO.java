@@ -9,7 +9,7 @@ public class UserDTO {
 	
 	
 	public UserDTO() {
-		super();
+		
 	}
 	public UserDTO(String user, String type) {
 		super();

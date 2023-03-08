@@ -52,6 +52,16 @@ public class Ordem {
 		this.ordemEtapa = ordemEtapa;
 	}
 	
+	public Ordem(int idEquipamento, String descricaoProblema, String cnpjCliente, String nomeCliente,
+			OrdemEtapa ordemEtapa) {
+		
+		this.idEquipamento = idEquipamento;
+		this.descricaoProblema = descricaoProblema;
+		this.cnpjCliente = cnpjCliente;
+		this.nomeCliente = nomeCliente;
+		this.ordemEtapa = ordemEtapa;
+	}
+	
 	
 
 	public Ordem() {

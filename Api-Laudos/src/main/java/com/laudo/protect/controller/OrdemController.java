@@ -59,13 +59,18 @@ public class OrdemController {
 	@RequestMapping(value = "/ordem", method = RequestMethod.POST)
 	public ResponseEntity<Ordem> iniciarNovaOrdem(@RequestBody Ordem ordem){
 		
-		Ordem res = service.iniciarOrdem(ordem);
-		
-		if(res!=null) {
-			return ResponseEntity.ok(res);
+		if(ordem!=null) {
+			Ordem res = service.iniciarOrdem(ordem);
+			
+			if(res!=null) {
+				return ResponseEntity.ok(res);
+			}else {
+				return ResponseEntity.notFound().build();
+			}
 		}else {
-			return ResponseEntity.notFound().build();
+			    return ResponseEntity.badRequest().build();
 		}
+		
 		
 	}
 	

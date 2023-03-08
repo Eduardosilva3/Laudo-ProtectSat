@@ -67,13 +67,18 @@ public class UserControllerTest {
 	public void registrarUsuario() {
 		User res = new User(2, "Teste","1234","manutencao");
 		User u = new User("Teste", "1234", "manutencao");
+		User uError = new User("Teste", "12345", "manutencao");
+		
 		
 		when(service.cadastrarUsuario(u)).thenReturn(res);
 		
 		ResponseEntity<User> s = controller.registrar(u);
 		
+		ResponseEntity<User> resError = controller.registrar(uError);
+		
 		Assertions.assertEquals(200,s.getStatusCodeValue());
 		Assertions.assertEquals(res, s.getBody());
+		Assertions.assertEquals(400, resError.getStatusCodeValue());
 		
 	}
 	

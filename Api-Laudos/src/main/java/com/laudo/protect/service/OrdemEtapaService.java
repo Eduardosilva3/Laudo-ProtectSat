@@ -21,7 +21,7 @@ public class OrdemEtapaService implements IEtapaService{
 	}
 
 	@Override
-	public OrdemEtapa iniciarEtapa(OrdemEtapa oEtapa) {
+	public  OrdemEtapa iniciarEtapa(OrdemEtapa oEtapa) {
 		// TODO Auto-generated method stub
 		return dao.save(oEtapa);
 	}
