@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.laudo.protect.config.AuthToken;
 import com.laudo.protect.config.TokenUtil;
 import com.laudo.protect.dto.UserDTO;
+import com.laudo.protect.dto.UserLoginDTO;
 import com.laudo.protect.model.User;
 import com.laudo.protect.service.UserService;
 
@@ -32,18 +33,19 @@ public class UserController {
 	        
 	        notes = "Post para Validar Usuarios")
 	@PostMapping("/user")
-	public ResponseEntity<AuthToken> validarUsuario(@RequestBody User user){
+	public ResponseEntity<AuthToken> validarUsuario(@RequestBody UserLoginDTO user){
 		
 		
 		
 		
-		User res = service.verificarUsuario(user);
-		UserDTO userDto = new UserDTO(res.getUser(), res.getType());
+		UserDTO res = service.verificarUsuario(user);
 		
 		
 		
 		
-			return ResponseEntity.ok(TokenUtil.encodeToken(userDto));
+		
+		
+			return ResponseEntity.ok(TokenUtil.encodeToken(res));
 		
 			
 		

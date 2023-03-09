@@ -3,13 +3,13 @@
   <div class="row row-nav">
     <div class="col-md-8 div-nav">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand logo" href="#"><img src="../../../assets/img/logo.png" width="70" height="30" alt=""></a>
+        <a class="navbar-brand logo" routerLink=""><img src="../../../assets/img/logo.png" width="70" height="30" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-          
+
           <button type="button" class="btn btn-light" id="sair" (click)="this.service.logout()"> <span>Sair </span> <img src="../../../assets/img/sair.png" alt="Sair da conta" > </button>
           <button type="button" class="btn btn-light" id="voltar" routerLink="/tecnico/lista-ordens"> <a routerLink="/tecnico/lista-ordens">Voltar </a><img src="../../../assets/img/volte.png" alt="voltar a tela anterior" > </button>
         </div>
@@ -53,18 +53,18 @@
                 <span *ngIf="!laudoFinal">Aguardando Laudo</span>
                 <div *ngIf="laudoFinal">
                   <a href="{{this.linkLaudoFinal}}" target="_blank" rel="noopener noreferrer">  <button type="button" class="btn btn-success"  >Laudo<br>Final</button></a>
-                
 
-                  
+
+
 
                 </div>
               </div>
             </li>
         </ul>
 
-        
+
     </div>
-    
+
 
 
 
@@ -75,7 +75,7 @@
       <div class="col-md-5">
         <h4>Laudo Temporário:</h4>
         <p>{{this.textoLaudoTemporario}}</p>
-        
+
       </div>
     </div>
 

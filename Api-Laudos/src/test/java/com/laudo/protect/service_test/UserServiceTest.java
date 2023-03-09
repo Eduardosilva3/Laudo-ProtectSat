@@ -14,6 +14,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.laudo.protect.controller.UserController;
+import com.laudo.protect.dto.UserDTO;
+import com.laudo.protect.dto.UserLoginDTO;
 import com.laudo.protect.model.User;
 import com.laudo.protect.repository.dao.UserDao;
 import com.laudo.protect.service.UserService;
@@ -42,11 +44,11 @@ public class UserServiceTest {
 	@Test
 	public void VerificarUser() {
 		
-		User u = new User("Teste","1234" , null);
+		UserLoginDTO u = new UserLoginDTO("Teste","1234");
 		User res = new User(1, "Teste", new BCryptPasswordEncoder().encode("1234"), "manutencao");
 		when(dao.findByuser(u.getUser())).thenReturn(res);
 		
-		User s = service.verificarUsuario(u);
+		UserDTO s = service.verificarUsuario(u);
 		
 		Assertions.assertEquals("manutencao", s.getType());
 		
@@ -56,11 +58,11 @@ public class UserServiceTest {
 	@Test
 	public void VerificarUserSenha() {
 		
-		User u = new User("Teste","123" , null);
+		UserLoginDTO u = new UserLoginDTO("Teste","123");
 		User res = new User(1, "Teste", new BCryptPasswordEncoder().encode("1234"), "manutencao");
 		when(dao.findByuser(u.getUser())).thenReturn(res);
 		
-		User s = service.verificarUsuario(u);
+		UserDTO s = service.verificarUsuario(u);
 		
 		Assertions.assertEquals("Erro Login", s.getType());
 		

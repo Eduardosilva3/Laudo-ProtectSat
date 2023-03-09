@@ -37,6 +37,7 @@ import com.laudo.protect.config.MyFilter;
 import com.laudo.protect.config.TokenUtil;
 import com.laudo.protect.controller.UserController;
 import com.laudo.protect.dto.UserDTO;
+import com.laudo.protect.dto.UserLoginDTO;
 import com.laudo.protect.model.User;
 import com.laudo.protect.service.UserService;
 
@@ -85,8 +86,8 @@ public class UserControllerTest {
 	
 	@Test
 	public void validarUsuarioValido() {
-		User body = new User("Teste", "1234", null);
-		User res = new User(2, "Teste","1234","manutencao");
+		UserLoginDTO body = new UserLoginDTO("Teste", "1234");
+		UserDTO res = new UserDTO("Teste","manutencao");
 		
 		lenient().when(service.verificarUsuario(body)).thenReturn(res);
 		
@@ -127,8 +128,8 @@ public class UserControllerTest {
 	@Test
 	public void validarUsuarioInvalido() {
 		
-		User body = new User("Teste", "1234", null);
-		User res = new User("Teste","1234","Erro Login");
+		UserLoginDTO body = new UserLoginDTO("Teste", "1234");
+		UserDTO res = new UserDTO("Teste","Erro Login");
 		
 		lenient().when(service.verificarUsuario(body)).thenReturn(res);
 		

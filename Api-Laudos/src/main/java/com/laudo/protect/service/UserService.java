@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.laudo.protect.dto.UserDTO;
+import com.laudo.protect.dto.UserLoginDTO;
 import com.laudo.protect.model.User;
 import com.laudo.protect.repository.dao.UserDao;
 
@@ -21,17 +23,19 @@ public class UserService implements IUserService {
 		return dao.findByuser(user);
 	}
 	
-	public User verificarUsuario(User user){
+	public UserDTO verificarUsuario(UserLoginDTO user){
 		
 		User res = dao.findByuser(user.getUser());
-		
+		UserDTO userDto = new UserDTO();
 		
 		
 		if(res!=null&& new BCryptPasswordEncoder().matches(user.getSenha(), res.getSenha()) ) {
-			return res;
+			userDto.setType(res.getType());
+			userDto.setUser(res.getUser());
+			return userDto;
 		}else{
-			user.setType("Erro Login");
-			return user;
+			userDto.setType("Erro Login");
+			return userDto;
 		}
 		
 	}
