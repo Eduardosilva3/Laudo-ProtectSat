@@ -6,6 +6,10 @@ import { OrdemPendenteComponent } from './ordem-pendente/ordem-pendente.componen
 import { ManutencaoRoutingModule } from './manutencao-routing.module';
 import { TratamentoOrdemComponent } from './tratamento-ordem/tratamento-ordem.component';
 import { FormsModule } from '@angular/forms';
+import {MatBadgeModule} from '@angular/material/badge'
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 
@@ -15,13 +19,16 @@ import { FormsModule } from '@angular/forms';
     TelaManutencaoComponent,
     OrdemPendenteComponent,
     TratamentoOrdemComponent
-    
+
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
     ManutencaoRoutingModule,
-    FormsModule
+    FormsModule,
+    MatBadgeModule,
+    MatButtonModule,
+    BrowserAnimationsModule
 
   ]
 })

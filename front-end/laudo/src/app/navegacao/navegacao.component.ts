@@ -33,7 +33,7 @@ export class NavegacaoComponent implements OnInit{
 
   login(user:User){
     this.service.validarUser(user).subscribe((type:any)=>{
-      console.log(type)
+      
 
       var token:string = type.token
       var resultado = token.replace("Bearer ", "")

@@ -10,7 +10,7 @@ import { OrdemService } from 'src/app/tecnico/services/ordem.service';
 export class EtapasService {
 
 
-  url = 'http://localhost:8080/etapa'; // api rest fake
+  url = 'http://192.168.0.14:8080/etapa'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }

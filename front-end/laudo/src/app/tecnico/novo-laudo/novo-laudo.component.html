@@ -1,13 +1,84 @@
 <header>
     <h3>Registro de Nova Ordem de manutenção</h3>
 </header>
+
+<div class="row">
+  <div class="col-md-12">
+
+    <form [formGroup]="formulario">
+      <mat-form-field class="example-full-width">
+        <mat-label>CNPJ:</mat-label>
+        <input matInput placeholder="Cnpj Cliente" type="text"  maxlength="18" formControlName="cnpj"  (keypress)="formatarCnpj()">
+        <mat-error  *ngIf="formulario.get('cnpj')?.errors?.['required']  && formulario.get('cnpj')?.touched" class="alerta">
+          CNPJ  <strong class="alerta">Obrigátorio</strong>
+        </mat-error>
+        <mat-error  *ngIf="formulario.get('cnpj')?.touched" class="alerta">
+          <strong class="alerta"> Atenção: </strong>Verificar numeração do CNPJ!
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Cliente:</mat-label>
+        <input matInput placeholder="Cliente" type="text" formControlName="cliente" >
+        <mat-error *ngIf="formulario.get('cliente')?.errors?.['required']  && formulario.get('cliente')?.touched" class="alerta">
+          Cliente  <strong class="alerta">Obrigátorio</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>ID -Equipamento:</mat-label>
+        <input matInput placeholder="Cnpj Cliente" type="text" formControlName="id" >
+        <mat-error *ngIf="formulario.get('id')?.errors?.['required']  && formulario.get('id')?.touched" class="alerta">
+          ID  <strong class="alerta">Obrigátorio</strong>
+        </mat-error>
+        <mat-error *ngIf="formulario.get('id')?.touched"  class="alerta">
+          <strong class="alerta"> Atenção: </strong>O Id deve ser maior ou igual a 6 Digitos!
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Descrição do Problema:</mat-label>
+        <textarea matInput placeholder="Descreva o problema relatado pelo Cliente ..." formControlName="descricao"></textarea>
+
+          <mat-error *ngIf="formulario.get('descricao')?.errors?.['required']  && formulario.get('descricao')?.touched" class="alerta">
+            Descrição  <strong class="alerta">Obrigátorio</strong>
+          </mat-error>
+          <mat-error  *ngIf="formulario.get('descricao')?.touched"  class="alerta">
+            <strong class="alerta"> Atenção: </strong>A Descrição deve possuir pelo menos 100 Caracteres!
+          </mat-error>
+
+
+
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" [disabled]="!formulario.valid" (click)="cadastrarOrdem()">
+        Abrir Serviço
+      </button>
+
+
+
+    </form>
+
+    <div class="alert alert-success" role="alert" *ngIf="this.alert">
+      <h4 class="alert-heading">Ordem de manutenção inicia com Sucesso!</h4>
+      <button type="button" class="close"  aria-label="Close" (click)="this.alert = false">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+      <p>A ordem de Serviço foi inicia com Sucesso, Direcione o Equipamento para manutenção e anote a ordem de serviço abaixo:</p>
+      <hr>
+      <p class="mb-0"><span id="ordem">Ordem de Serviço: </span>{{this.idOrdem}}</p>
+  </div>
+
+  </div>
+
+</div>
+
+<!--
 <div class="row">
     <div class="col-md-12">
         <div class="alert alert-danger" role="alert" *ngIf="this.alertFormIf">
             {{alertForm}}
           </div>
 
-          
+
 
         <form #f="ngForm">
             <div class="input-group mb-3">
@@ -28,7 +99,7 @@
                    </div>
                        <input name="id" type="text" class="form-control" placeholder="ID" aria-label="Usuário" aria-describedby="basic-addon1" ngModel>
                   </div>
-       
+
                   <div class="input-group">
                    <div class="input-group-prepend">
                      <span class="input-group-text">Descrição do problema:</span>
@@ -36,27 +107,19 @@
                    <textarea name="descricao" class="form-control" aria-label="Com textarea" placeholder="Descreva aqui o problema relatado pelo cliente" ngModel></textarea>
                  </div>
                  <div>
-                    <button type="button" class="btn btn-primary" (click)="cadastrarOrdem(f)">Abrir Serviço</button>
+                    <button type="button" class="btn btn-primary" (click)="cadastrarOrdem()">Abrir Serviço</button>
                  </div>
-       
-           
+
+
 
 
         </form>
 
-        <div class="alert alert-success" role="alert" *ngIf="this.alert">
-            <h4 class="alert-heading">Ordem de manutenção inicia com Sucesso!</h4>
-            <button type="button" class="close"  aria-label="Close" (click)="this.alert = false">
-                <span aria-hidden="true">&times;</span>
-              </button>
 
-            <p>A ordem de Serviço foi inicia com Sucesso, Direcione o Equipamento para manutenção e anote a ordem de serviço abaixo:</p>
-            <hr>
-            <p class="mb-0"><span id="ordem">Ordem de Serviço: </span>{{this.idOrdem}}</p>
-        </div>
 
-        
+
     </div>
-        
+
 
 </div>
+-->

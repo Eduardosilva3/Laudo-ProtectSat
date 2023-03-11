@@ -1,6 +1,7 @@
 package com.laudo.protect.service;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,7 @@ public class OrdemService implements IOrdemService {
 		// TODO Auto-generated method stub
 		Ordem res = dao.save(ordem);
 		
-		OrdemEtapa ordemE = new OrdemEtapa(true, LocalDate.now(), true, LocalDate.now(), res.getDescricaoProblema() , false, false, res);
+		OrdemEtapa ordemE = new OrdemEtapa(true, LocalDate.now(ZoneId.of("America/Sao_Paulo")), true,  LocalDate.now(ZoneId.of("America/Sao_Paulo")), res.getDescricaoProblema() , false, false, res);
 		OrdemEtapa resEtapa = service.iniciarEtapa(ordemE);
 		res.setOrdemEtapa(resEtapa);
 		

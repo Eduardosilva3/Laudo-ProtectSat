@@ -11,20 +11,32 @@ import { FormsModule } from '@angular/forms';
 import { ManutencaoModule } from './manutencao/manutencao.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './services/interceptors/token.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatBadgeModule} from '@angular/material/badge';
+import { DetlhesDialogComponent } from './compontents/detlhes-dialog/detlhes-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import{MatButtonModule} from '@angular/material/button'
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavegacaoComponent
+    NavegacaoComponent,
+    DetlhesDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     TecnicoModule,
     FormsModule,
-    ManutencaoModule
+    ManutencaoModule,
+    BrowserAnimationsModule,
+    MatBadgeModule,
+    MatDialogModule,
+    MatButtonModule
+
   ],
   providers: [{provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,

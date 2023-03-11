@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DetlhesDialogComponent } from 'src/app/compontents/detlhes-dialog/detlhes-dialog.component';
 import { Ordem } from 'src/app/tecnico/model/ordem';
 import { OrdemService } from 'src/app/tecnico/services/ordem.service';
 
@@ -17,7 +19,8 @@ export class OrdemPendenteComponent implements OnInit, OnDestroy{
 
   ordem:Ordem[] = []
 
-    constructor(private service:OrdemService){}
+    constructor(private service:OrdemService, public dialog: MatDialog
+      ){}
 
     ngOnDestroy(): void {
 
@@ -26,7 +29,7 @@ export class OrdemPendenteComponent implements OnInit, OnDestroy{
   }
 
   abrirDetalhes(ord:Ordem){
-    alert(ord.descricaoProblema)
+    this.abrirDialogo(ord)
   }
 
   closeEvent(ord:Ordem){
@@ -96,6 +99,17 @@ export class OrdemPendenteComponent implements OnInit, OnDestroy{
         }
       }
 
+
+      abrirDialogo(ord:Ordem): void {
+        const dialogRef = this.dialog.open(DetlhesDialogComponent, {
+          data: ord,
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed');
+
+        });
+      }
 
 
 

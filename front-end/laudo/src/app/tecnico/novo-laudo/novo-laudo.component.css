@@ -5,3 +5,22 @@ div button{
 #ordem{
     font-weight: bold;
 }
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.alerta{
+  font-size: 1rem;
+}
+
+mat-form-field{
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
+}

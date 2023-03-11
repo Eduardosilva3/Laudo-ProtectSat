@@ -6,6 +6,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -47,6 +48,7 @@ public class OrdemServiceTest {
 	
 	@BeforeAll
 	public static void iniciarLista() {
+		
 		
 		
 		ord = new Ordem(1, 907850123, "Problema de Teste", "99.999.999-99", "Cliente de Teste", null);

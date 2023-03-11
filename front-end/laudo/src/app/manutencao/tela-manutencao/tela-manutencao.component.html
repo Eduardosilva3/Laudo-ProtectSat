@@ -10,8 +10,9 @@
           <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <button type="button" class="btn btn-warning buttonNotifica" (click)="getOrdemPendente()" >
-                    O.S Pendentes <span class="badge badge-light">{{this.pendente}}</span>
+
+                  <button   class="buttonNotifica" mat-raised-button color="primary" matBadge="{{this.pendente}}" MatBadgeSize="small" matBadgeColor="warn" (click)="getOrdemPendente()">
+                    O.S Pendentes
                   </button>
 
               </li>
@@ -53,3 +54,5 @@
       </div>
     </div>
   </div>
+
+

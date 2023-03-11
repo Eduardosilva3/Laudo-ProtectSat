@@ -1,24 +1,27 @@
 .container-fluid{
     background-color: #DCDCDC;
     height: max-content;
-    
+
     width: 100%;
-  
+
   }
-  
-  
+  #conteudoNavbarSuportado{
+    margin-top: 0.25rem;
+  }
+
+
   .row{
     justify-content: space-around;
-  
+
   }
-  
+
   .navbar{
     border-radius: 0.5rem;
   }
   .div-nav{
     margin: 1rem;
   }
-  
+
   nav .logo{
     border: solid 0.1rem;
     border-radius: 0.5rem;
@@ -29,18 +32,19 @@
   }
 
   .buttonNotifica{
-    margin: left 0.5rem; 
-    margin-right: 0.5rem;
+    margin: left 1rem;
+    margin-right: 1rem;
   }
-  
-  
-  
-  
-  
+
+  .cdk-focused, .cdk-mouse-focused {
+    outline: 0 !important;
+  }
+
+
+
   #sair span,
   button img
   {
     width: 1.2rem;
     height:1.2rem;
   }
-  

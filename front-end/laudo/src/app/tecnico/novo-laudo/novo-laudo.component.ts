@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormBuilder, FormControl, Validator, Validators, FormControlName } from '@angular/forms';
 import { Ordem } from '../model/ordem';
 import { OrdemService } from '../services/ordem.service';
 
@@ -11,47 +11,101 @@ import { OrdemService } from '../services/ordem.service';
 })
 export class NovoLaudoComponent implements OnInit {
 
-    
-    
+
+
     ordem = new Ordem()
     alert:boolean =false
     idOrdem?:number;
     alertForm:string;
     alertFormIf:boolean = false;
     cnpj:String =""
-    constructor(private service: OrdemService) {}
-  
+    formulario: FormGroup
+
+
+
+    constructor(private service: OrdemService, private formBuider:FormBuilder) {}
+
     ngOnInit(): void {
+
+
+
+
+    this.buildeForm()
+
+
     this.alert = false;
     this.alertFormIf = false;
     }
-    
+
 
     formatarCnpj(){
-      
-      
+
+      this.cnpj = this.formulario.get('cnpj')?.value
+
       if(this.cnpj.length==2){
+        //this.CnpjFormControll.setValue(this.CnpjFormControll.value+".")
         this.cnpj+="."
+        this.formulario.get('cnpj')?.setValue(this.cnpj)
+
       }
-      
+
       if(this.cnpj.length==6){
+        //this.CnpjFormControll.setValue(this.CnpjFormControll.value+".")
         this.cnpj+="."
+        this.formulario.get('cnpj')?.setValue(this.cnpj)
       }
 
       if(this.cnpj.length==10){
+        //this.CnpjFormControll.setValue(this.CnpjFormControll.value+"/")
         this.cnpj+="/"
+        this.formulario.get('cnpj')?.setValue(this.cnpj)
       }
 
       if(this.cnpj.length==15){
+        //this.CnpjFormControll.setValue(this.CnpjFormControll.value+"-")
         this.cnpj+="-"
+        this.formulario.get('cnpj')?.setValue(this.cnpj)
       }
 
-      
+
+
+
+
+    }
+
+    buildeForm(){
+      this.formulario = this.formBuider.group({
+        cnpj: ['',[Validators.required, Validators.minLength(18)]],
+        cliente:['', [Validators.required]],
+        id:['', [Validators.required, Validators.minLength(6)]],
+        descricao:['', [Validators.required, Validators.minLength(10)]]
+
+      });
     }
 
 
-    cadastrarOrdem(f:NgForm){
-     
+    cadastrarOrdem(){
+
+
+      this.ordem.cnpjCliente = this.formulario.value.cnpj
+      this.ordem.descricaoProblema = this.formulario.value.descricao
+      this.ordem.nomeCliente = this.formulario.value.cliente
+      this.ordem.idEquipamento = this.formulario.value.id
+
+      this.service.saveOrdem(this.ordem).subscribe((ord:Ordem) => {
+
+
+        this.ordem = ord;
+        this.idOrdem = ord.idOrdem
+        this.confirmacao();
+
+
+      });
+
+    }
+
+    /*cadastrarOrdem(f:NgForm){
+
       this.ordem.cnpjCliente = f.value.cnpj
       this.ordem.descricaoProblema = f.value.descricao
       this.ordem.nomeCliente = f.value.cliente
@@ -72,37 +126,37 @@ export class NovoLaudoComponent implements OnInit {
       }else{
         this.alertFormIf =false
       this.service.saveOrdem(this.ordem).subscribe((ord:Ordem) => {
-        
-        
+
+
         this.ordem = ord;
         this.idOrdem = ord.idOrdem
         this.confirmacao(f);
 
-        
+
       });
       }
 
 
 
 
-      
-      
-      
-    }
+
+
+
+    }*/
 
     // limpa o formulario
-  cleanForm(form: NgForm) {
+  cleanForm() {
     this.ordem = new Ordem()
-    form.resetForm();
-    
+    this.buildeForm()
+
   }
 
-  confirmacao(f:NgForm){
+  confirmacao(){
     this.alert = true;
-    
-    this.cleanForm(f);
+
+    this.cleanForm();
   }
 
-    
+
 
 }
