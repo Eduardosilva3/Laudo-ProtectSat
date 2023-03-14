@@ -11,21 +11,23 @@
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
 
-                  <button   class="buttonNotifica" mat-raised-button color="primary" matBadge="{{this.pendente}}" MatBadgeSize="small" matBadgeColor="warn" (click)="getOrdemPendente()">
+                  <button  style="color: black;background-color: rgb(184, 138, 245);" class="buttonNotifica" mat-raised-button matBadge="{{this.pendente}}" MatBadgeSize="small" matBadgeColor="warn" (click)="getOrdemPendente()">
                     O.S Pendentes
                   </button>
 
               </li>
               <li class="nav-item">
-                <button type="button" class="btn btn-danger buttonNotifica" (click)="getOrdemAtrasada()">
-                    O.S Atrasadas <span class="badge badge-light">{{this.atrasadas}}</span>
-                  </button>
+                <button  style="background-color: rgb(255, 217, 0) ;color: black" class="buttonNotifica" mat-raised-button color="primary" matBadge="{{this.atrasadas}}" MatBadgeSize="small" matBadgeColor="warn" (click)="getOrdemAtrasada()">
+                  O.S Atrasadas
+                </button>
+
 
               </li>
               <li class="nav-item">
-                <button type="button" class="btn btn-success buttonNotifica" (click)="getOrdemConcluida()">
-                    O.S Concluidas <span class="badge badge-light">{{this.concluida}}</span>
-                  </button>
+                <button   style="background-color: rgb(9, 209, 9);" class="buttonNotifica concluida" mat-raised-button  matBadge="{{this.concluida}}" MatBadgeSize="small" matBadgeColor="warn" (click)="getOrdemConcluida()">
+                  O.S Concluidas
+                </button>
+
 
               </li>
 

@@ -15,6 +15,7 @@ export class OrdemPendenteComponent implements OnInit, OnDestroy{
 
   @Input() lista:Ordem[]
   @Output() onClose = new EventEmitter()
+  
 
 
   ordem:Ordem[] = []
@@ -105,8 +106,9 @@ export class OrdemPendenteComponent implements OnInit, OnDestroy{
           data: ord,
         });
 
-        dialogRef.afterClosed().subscribe(result => {
-          console.log('The dialog was closed');
+        dialogRef.afterClosed().subscribe((result:Ordem) => {
+
+          this.closeEvent(result)
 
         });
       }

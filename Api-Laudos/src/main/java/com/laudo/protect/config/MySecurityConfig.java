@@ -19,7 +19,7 @@ public class MySecurityConfig {
 	
 	@Bean
 	SecurityFilterChain securittyFilterChain(HttpSecurity http) throws Exception {
-		System.out.println("configuracao");
+		
 		http.csrf().disable()  //desabilida o csrf
 		.authorizeHttpRequests()
 		.antMatchers(HttpMethod.POST, "/user").permitAll()

@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <table class="table" id="table">
+        <table class="table table-bordered" id="table">
             <thead class="thead-dark">
               <tr>
                 <th scope="col">O.S</th>
@@ -8,20 +8,29 @@
                 <th scope="col">Cliente</th>
                 <th scope="col">ID Equipamento</th>
                 <th scope="col">Status</th>
-                <th scope="col">Ações</th>
+
 
               </tr>
             </thead>
             <tbody>
-              <tr  *ngFor="let o of ordem">
-                <td id="os">{{o.idOrdem}}</td>
-                <td>{{o.cnpjCliente}}</td>
-                <td>{{o.nomeCliente}}</td>
-                <td>{{o.idEquipamento}}</td>
-                <td [ngStyle]="{backgroundColor: this.determinarCor(o.status)}" id="status">{{o.status}}</td>
-                
-                <td id="td-button"> <button type="button" class="btn btn-info"  (click)="abrirDetalhes(o)">Detalhes</button>
-                  <button type="button" class="btn btn-info"  (click)="closeEvent(o)">{{this.determinarTextoBotao(o)}}</button> </td>
+              <tr  *ngFor="let o of ordem" class="dados">
+                <td id="os" style="vertical-align: middle;">{{o.idOrdem}}</td>
+                <td style="vertical-align: middle;">{{o.cnpjCliente}}</td>
+                <td style="vertical-align: middle;">{{o.nomeCliente}}</td>
+                <td style="vertical-align: middle;">{{o.idEquipamento}}</td>
+                <td [ngStyle]="{backgroundColor: this.determinarCor(o.status)}" style="vertical-align: middle;" id="status">{{o.status}} <mat-icon>build</mat-icon>  </td>
+
+                <td id="td-button">
+
+
+                  <button type="button" mat-mini-fab color="primary"  (click)="abrirDetalhes(o)"  matTooltip="Detalhes da O.S"
+                  matTooltipPosition="above"
+                  aria-label="Button that shows a red tooltip"  >
+
+                    <mat-icon>description</mat-icon>
+
+                  </button>
+                   </td>
               </tr>
 
             </tbody>

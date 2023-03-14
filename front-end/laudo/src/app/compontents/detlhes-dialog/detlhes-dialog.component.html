@@ -8,19 +8,27 @@
         <td>Cliente:</td>
         <td>Data de Recebimento:</td>
         <td>Descrição do Problema:</td>
+        <td *ngIf="data.ordemEtapa.etapa_3">Laudo Temporário:</td>
+        <td *ngIf="data.ordemEtapa.etapa_4">Laudo Final:</td>
+
       </tr>
       <tr>
 
         <td>{{data.nomeCliente}}</td>
-        <td>{{this.dataRecebimento}}</td>
+        <td>{{this.dataRecebimento.getDate()}}/{{mes(this.dataRecebimento.getMonth()+1)}}/{{this.dataRecebimento.getFullYear()}}</td>
         <td>{{data.descricaoProblema}}</td>
+        <td *ngIf="data.ordemEtapa.etapa_3">{{data.ordemEtapa.laudoTemporario}}</td>
+        <td *ngIf="data.ordemEtapa.etapa_4">{{data.ordemEtapa.laudoFinal}}</td>
+
       </tr>
 
     </tbody>
   </table>
 
 </div>
-<div mat-dialog-actions>
-  <button mat-button >No Thanks</button>
-  <button mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button>
+<div mat-dialog-actions class="buttonClosed">
+
+  <button mat-raised-button [mat-dialog-close]="" cdkFocusInitial style="background-color: rgba(217, 255, 47, 0.959); ">Fechar</button>
+  <button mat-raised-button [mat-dialog-close]="data" cdkFocusInitial style="background-color:#708090 ;color: white;" *ngIf="!data.ordemEtapa.etapa_3" >Preencher Laudo Temporario</button>
+  <button mat-raised-button [mat-dialog-close]="data" cdkFocusInitial style="background-color:#708090 ; color: white;" *ngIf="data.ordemEtapa.etapa_3 && !data.ordemEtapa.etapa_4" >Preencher Laudo Final</button>
 </div>

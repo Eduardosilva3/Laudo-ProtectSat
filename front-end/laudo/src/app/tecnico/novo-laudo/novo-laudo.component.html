@@ -1,5 +1,5 @@
 <header>
-    <h3>Registro de Nova Ordem de manutenção</h3>
+    <h2>Registro de Nova Ordem de manutenção</h2>
 </header>
 
 <div class="row">
@@ -25,7 +25,7 @@
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>ID -Equipamento:</mat-label>
-        <input matInput placeholder="Cnpj Cliente" type="text" formControlName="id" >
+        <input matInput placeholder="ID do Dispositivo" type="text" formControlName="id" >
         <mat-error *ngIf="formulario.get('id')?.errors?.['required']  && formulario.get('id')?.touched" class="alerta">
           ID  <strong class="alerta">Obrigátorio</strong>
         </mat-error>
